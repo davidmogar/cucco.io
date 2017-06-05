@@ -1,0 +1,23 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  justify-content: center;
+  text-align: center;
+}
+
+p {
+  font-weight: 300;
+}
+
+#box {
+  margin-top: -100px;
+}
+
+#box img {
+  margin-top: 30px;
+}
