@@ -1,25 +1,111 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Cucco website">
-    
-    <meta name="author" content="David Moreno-García">
-    <meta name="theme-color" content="#000000">
-    
     <title>cucco</title>
-    
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="with=device-with, initial-scale=1">
+
+    <meta name="decription" content="Text normalization library for Python">
+    <meta name="keywords" content="python,normalization,language,punctuation,library,cucco,text,manipulation">
+    <meta name="author" content="David Moreno-García">
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/highlight/github-gist.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
+
   <body>
-    <div id="box">
-      <h1>cucco</h1>
-      <p>Sweeping the feathers.</p>
-      <p>The site will be ready soon.</p>
-      <a href="https://github.com/davidmogar/cucco"><img src="images/github.png" alt="GitHub logo"></a>
-    </div>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="column column-33">
+            <h1><a href="#">cucco</a></h1>
+          </div>
+          <div class="column column-67">
+            <nav>
+              <ul>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Contribute</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section id="hero">
+      <div class="container">
+        <div class="row">
+          <div class="column column-67">
+            <h2>Text normalization made easy - for real</h2>
+            <h3>Cucco is here to help you to normalize that nasty text. Let this little friend do the hard work for you.</h3>
+
+            <button class="button">Try it now</button>
+          </div>
+          <div class="column column-33">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="features" class="container">
+      <div class="row">
+        <div class="column column-33">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+          <h4>Easy to use</h4>
+          <p>Directly from your code or the command line. You will always find a way to normalize your text in a couple of steps.</p>
+        </div>
+        <div class="column column-33">
+          <i class="fa fa-language" aria-hidden="true"></i>
+          <h4>50+ languages</h4>
+          <p>Removing English stop words is nice but removing them in more than 50+ languages is better, right?</p>
+        </div>
+        <div class="column column-33">
+          <i class="fa fa-shield" aria-hidden="true"></i>
+          <h4>Fully tested</h4>
+          <p>Worried about broken updates? With a 100% test coverage we have your back. Find us on <a href="https://codecov.io/gh/davidmogar/cucco">Codecov</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="getting-started">
+      <div class="container">
+        <h5>Getting started</h5>
+        <span>Use cucco to normalize your text. It's pretty easy.</span>
+        <span class="gradient">All it takes is a few lines of code.</span>
+
+        <div class="code-box">
+          <h6>Add some normalizations</h6>
+          <p>Or you can simply choose not to add them and use the default normalizations. Your pick.</p>
+<pre><code class="python">
+from cucco import Cucco
+
+cucco = Cucco()
+
+normalizations = [
+    'remove_extra_whitespaces',
+    ('replace_punctuation', {'replacement': ' '})
+]
+
+print(cucco.normalize('Who let       the   cucco out?', normalizations))
+</code></pre>
+<pre><code>
+Who let the cucco out
+</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>Copyright © 2017 David Moreno García.</p>
+        <p>Licensed under the <a href="https://github.com/davidmogar/cucco/blob/master/LICENSE">MIT License</a>.</p>
+      </div>
+    </footer>
+
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
-
