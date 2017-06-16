@@ -5,7 +5,7 @@
     <title>cucco</title>
 
     <meta charset="utf-8" />
-    <meta name="viewport" content="with=device-with, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="decription" content="Text normalization library for Python">
     <meta name="keywords" content="python,normalization,language,punctuation,library,cucco,text,manipulation">
@@ -20,49 +20,49 @@
     <header>
       <div class="container">
         <div class="row">
-          <div class="column column-33">
+          <div class="column">
             <h1><a href="#">cucco</a></h1>
           </div>
-          <div class="column column-67">
+          <div class="column">
             <nav>
+              <i id="hamburger" class="fa fa-bars" aria-hidden="true"></i>
               <ul>
-              <li><a href="#">Features</a></li>
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Contribute</a></li>
-            </ul>
-          </nav>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </header>
 
-    <section id="hero">
+    <section id="hero" class="skew bottom">
+      <span class="background"></span>
       <div class="container">
         <div class="row">
-          <div class="column column-67">
+          <div class="column">
             <h2>Text normalization made easy - for real</h2>
             <h3>Cucco is here to help you to normalize that nasty text. Let this little friend do the hard work for you.</h3>
-
             <button class="button">Try it now</button>
-          </div>
-          <div class="column column-33">
           </div>
         </div>
       </div>
     </section>
     <section id="features" class="container">
       <div class="row">
-        <div class="column column-33">
+        <div class="column">
           <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
           <h4>Easy to use</h4>
           <p>Directly from your code or the command line. You will always find a way to normalize your text in a couple of steps.</p>
         </div>
-        <div class="column column-33">
+        <div class="column">
           <i class="fa fa-language" aria-hidden="true"></i>
           <h4>50+ languages</h4>
           <p>Removing English stop words is nice but removing them in more than 50+ languages is better, right?</p>
         </div>
-        <div class="column column-33">
+        <div class="column">
           <i class="fa fa-shield" aria-hidden="true"></i>
           <h4>Fully tested</h4>
           <p>Worried about broken updates? With a 100% test coverage we have your back. Find us on <a href="https://codecov.io/gh/davidmogar/cucco">Codecov</a>.</p>
@@ -70,17 +70,16 @@
       </div>
     </section>
 
-    <section id="getting-started">
+    <section id="getting-started" class="skew">
       <div class="container">
         <h5>Getting started</h5>
         <span>Use cucco to normalize your text. It's pretty easy.</span>
         <span class="gradient">All it takes is a few lines of code.</span>
 
-        <div class="code-box">
+        <div class="box">
           <h6>Add some normalizations</h6>
           <p>Or you can simply choose not to add them and use the default normalizations. Your pick.</p>
-<pre><code class="python">
-from cucco import Cucco
+<pre><code class="python">from cucco import Cucco
 
 cucco = Cucco()
 
@@ -89,10 +88,10 @@ normalizations = [
     ('replace_punctuation', {'replacement': ' '})
 ]
 
-print(cucco.normalize('Who let       the   cucco out?', normalizations))
+print(cucco.normalize('Who let       the   cucco out?',
+                      normalizations))
 </code></pre>
-<pre><code>
-Who let the cucco out
+<pre><code>Who let the cucco out
 </code></pre>
         </div>
       </div>
@@ -105,6 +104,7 @@ Who let the cucco out
       </div>
     </footer>
 
+    <script src="js/cucco.js"></script>
     <script src="js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
   </body>
