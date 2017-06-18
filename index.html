@@ -10,6 +10,12 @@
     <meta name="decription" content="Text normalization library for Python">
     <meta name="keywords" content="python,normalization,language,punctuation,library,cucco,text,manipulation">
     <meta name="author" content="David Moreno-García">
+    <meta name="theme-color" content="#301d30">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
 
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/highlight/github-gist.css">
@@ -27,9 +33,9 @@
             <nav>
               <i id="hamburger" class="fa fa-bars" aria-hidden="true"></i>
               <ul>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Documentation</a></li>
-                <li><a href="#">Support</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="support.html">Support</a></li>
                 <li><a href="contribute.html">Contribute</a></li>
               </ul>
             </nav>
@@ -53,19 +59,36 @@
     <section id="features" class="container">
       <div class="row">
         <div class="column">
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+          <h4>Multiple transformations</h4>
+          <p>Removing extra white spaces, replacing symbols, emojis, etc. There's a lot you can do with your text.</p>
+        </div>
+        <div class="column">
           <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
           <h4>Easy to use</h4>
-          <p>Directly from your code or the command line. You will always find a way to normalize your text in a couple of steps.</p>
+          <p>Do more with less code. Cucco offers the means to simplify your work.</p>
         </div>
         <div class="column">
           <i class="fa fa-language" aria-hidden="true"></i>
           <h4>50+ languages</h4>
           <p>Removing English stop words is nice but removing them in more than 50+ languages is better, right?</p>
         </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <i class="fa fa-terminal" aria-hidden="true"></i>
+          <h4>Use it from your terminal</h4>
+          <p>Directly from your code or the command line. You will always find a way to normalize your text in a couple of steps.</p>
+        </div>
         <div class="column">
           <i class="fa fa-shield" aria-hidden="true"></i>
           <h4>Fully tested</h4>
           <p>Worried about broken updates? With a 100% test coverage we have your back. Find us on <a href="https://codecov.io/gh/davidmogar/cucco">Codecov</a>.</p>
+        </div>
+        <div class="column">
+          <i class="fa fa-cloud" aria-hidden="true"></i>
+          <h4>Public API</h4>
+          <p>Do you want to test cucco but you don't want to bother installing it? Use our <a href="api.html">API</a>.</p>
         </div>
       </div>
     </section>
@@ -97,7 +120,7 @@ print(cucco.normalize('Who let       the   cucco out?',
       </div>
     </section>
 
-    <footer>
+    <footer class="expanded">
       <div class="container">
         <p>Copyright © 2017 David Moreno García.</p>
         <p>Licensed under the <a href="https://github.com/davidmogar/cucco/blob/master/LICENSE">MIT License</a>.</p>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>cucco</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="decription" content="Text normalization library for Python">
+    <meta name="keywords" content="python,normalization,language,punctuation,library,cucco,text,manipulation">
+    <meta name="author" content="David Moreno-García">
+    <meta name="theme-color" content="#301d30">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/highlight/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="column">
+            <h1><a href="index.html">cucco</a></h1>
+          </div>
+          <div class="column">
+            <nav>
+              <i id="hamburger" class="fa fa-bars" aria-hidden="true"></i>
+              <ul>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="hero">
+      <span class="background"></span>
+      <div class="container">
+        <h2>The right place to know more about cucco</h2>
+      </div>
+    </section>
+
+    <section id="documentation" class="container">
+      <div class="row">
+        <div class="sidebar column">
+          <span>cucco</span>
+          <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#how-to-install">How to install</a></li>
+            <li><a href="#quickstart">Quickstart</a></li>
+            <ul>
+              <li><a href="#minimal-application">A minimal application</a></li>
+              <li><a href="#custom-normalizations">Defining custom normalizations</a></li>
+            </ul>
+            <li><a href="#normalizations">Normalizations</a></li>
+            <ul>
+              <li><a href="#norm-accents">Remove accent marks</a></li>
+              <li><a href="#norm-whitespaces">Remove white spaces</a></li>
+              <li><a href="#norm-stopwords">Remove stop words</a></li>
+              <li><a href="#norm-characters">Replace characters</a></li>
+              <li><a href="#norm-emails">Replace emails</a></li>
+              <li><a href="#norm-emojis">Replace emojis</a></li>
+              <li><a href="#norm-hyphens">Replace hyphens</a></li>
+              <li><a href="#norm-punctuation">Replace punctuation</a></li>
+              <li><a href="#norm-symbols">Replace symbols</a></li>
+              <li><a href="#norm-urls">Replace urls</a></li>
+            </ul>
+          </ul>
+          <span>Command line interface</span>
+          <ul>
+            <li><a href="#cli-introduction">Introduction</a></li>
+            <li><a href="#configuration-file">The configuration file</a></li>
+            <li><a href="#normalizing">Normalizing input</a></li>
+            <ul>
+              <li><a href="#user-defined">User defined text</a></li>
+              <li><a href="#pipe-text">Pipe text</a></li>
+              <li><a href="#files-on-disk">Files on disk</a></li>
+            </ul>
+            <li><a href="#watch-mode">Watch mode</a></li>
+          </ul>
+          <span>API</span>
+          <ul>
+            <li>Introduction</li>
+            <li>Endpoints</li>
+            <li>Authentication</li>
+            <li>Rate limits</li>
+          </ul>
+        </div>
+        <div class="column">
+          <section>
+            <h3>Cucco</h3>
+            <section id="introduction">
+              <h4>Introduction</h4>
+              <p>Cucco is an easy-to-use text normalization library for Python that allows users to make text more consistent, and therefore makes data easier to process, by removing or replacing accent marks, white spaces, stop words, unnecessary characters and punctuation, and lots more.</p>
+            </section>
+
+            <section id="how-to-install">
+              <h4>How to install</h4>
+              <p>The easiest way to install cucco is by using pip, as you get the latest release version. Simply run the following command:</p>
+<pre><code class="shell">$ pip install cucco</code></pre>
+              <p>Another way to install cucco is by installing it directly from the code using Git. To do this, clone the repository from Github and install it like this:</p>
+<pre><code class="shell">$ git clone https://github.com/davidmogar/cucco.git
+$ cd cucco
+$ python setup.py install</code></pre>
+              <p>After using either of the two methods, you should now have the latest release version of cucco, ready to use.</p>
+            </section>
+
+            <section id="quickstart">
+              <h4>Quickstart</h4>
+              <p>Using cucco is very simple, which makes it stand out from other normalization tools. To get started, all you need is to have an up-to-date version of cucco installed. Check out the <a href="#how-to-install">How to Install</a> section if you have not done this already.</p>
+              <p>The basic idea is that you only have to input the text to be processed, specify the normalizations to apply and receive the text normalized as the output. Let's see some examples.</p>
+
+              <div id="minimal-application">
+                <h5>A minimal application</h5>
+                <p>You can normalize text within your code using the default settings. In the default mode, punctuation, extra white spaces and symbols are removed. A specified list of English stop words are also removed.</p>
+                <p>For example, to apply all normalizations to the text ‘Who let the cucco out?’:</p>
+<pre><code class="python">from cucco import Cucco
+
+cucco = Cucco()
+print(cucco.normalize('Who let the cucco out?'))</code></pre>
+                <p>The output would be the following, since the punctuation, extra white spaces and the stop words would be removed:</p>
+<pre><code>cucco</code></pre>
+              </div>
+              <div id="custom-normalizations">
+                <h5>Defining custom normalizations</h5>
+                <p>To define custom normalizations, you can send a list of normalizations to apply, which will be executed in order.</p>
+                <p>For example:</p>
+<pre><code class="python">from cucco import Cucco
+
+cucco = Cucco()
+
+normalizations = [
+    'remove_extra_whitespaces',
+    ('replace_punctuation', {'replacement': ' '})
+]
+
+print(cucco.normalize('Who    let   the cucco out?', normalizations))</code></pre>
+                <p>In this case, the output would be the following, since only extra white spaces were removed and punctuation is replaced by a white space:</p>
+<pre><code>Who let the cucco out</code></pre>
+              </div>
+            </section>
+
+            <section id="normalizations">
+              <h4>Normalizations</h4>
+              <p>Now that you have cucco installed and know the basics of how to process the text, here are a list of the various normalization functions that cucco can do for you.</p>
+
+              <div id="norm-accents">
+                <h5>Remove accent marks</h5>
+                <p>This function removes accent marks in the text. You can also define accent marks to be excluded  from this effect by setting up a parameter.</p>
+<pre class="signature"><code>def remove_accent_marks(text, excluded=None):
+"""
+Args:
+    text: The text to be processed.
+    excluded: Set of unicode characters to exclude.
+"""</code></pre>
+              </div>
+              <div id="norm-whitespaces">
+                <h5>Remove white spaces</h5>
+                <p>This function removes white spaces from the beginning and the end of the string, as well as duplicated white spaces between words.</p>
+<pre class="signature"><code>def remove_extra_whitespaces(text):
+"""
+Args:
+    text: The text to be processed.
+"""
+</code></pre>
+              </div>
+              <div id="norm-stopwords">
+                <h5>Remove stop words</h5>
+                <p>Stop words in over 50 languages are supported. The language of stop words to be loaded is specified during instantiation, according to the language code received. You can specify whether to take the letter case into account or not. English is the default language.</p>
+<pre class="signature"><code>def remove_stop_words(self, text, ignore_case=True, language=None):
+"""
+Args:
+    text: The text to be processed.
+    ignore_case: Whether or not ignore case.
+    language: Code of the language to use.
+"""</code></pre>
+              </div>
+              <div id="norm-characters">
+                <h5>Replace characters</h5>
+<pre class="signature"><code>def replace_characters(self, text, characters, replacement=''):</code></pre>
+                <p>You can remove specific characters from the input text or replace them with a specified string.</p>
+              </div>
+              <div id="norm-emails">
+                <h5>Replace emails</h5>
+                <p>You can remove email addresses from the input text or replace them with a specified string.</p>
+<pre class="signature"><code>def replace_emails(text, replacement=''):
+"""
+Args:
+    text: The text to be processed.
+    replacement: New text that will replace email addresses.
+"""</code></pre>
+              </div>
+              <div id="norm-emojis">
+                <h5>Replace emojis</h5>
+                <p>You can remove emojis, emoticons, or smileys from the input text, or replace them with a specified string.</p>
+<pre class="signature"><code>def replace_emojis(text, replacement=''):
+"""
+Args:
+    text: The text to be processed.
+    replacement: New text that will replace emojis.
+"""</code></pre>
+              </div>
+              <div id="norm-hyphens">
+                <h5>Replace hyphens</h5>
+                <p>You can replace hyphens from the input text with a white space or a specified string.</p>
+<pre class="signature"><code>def replace_hyphens(text, replacement=' '):
+"""
+Args:
+    text: The text to be processed.
+    replacement: New text that will replace hyphens.
+"""</code></pre>
+              </div>
+              <div id="norm-punctuation">
+                <h5>Replace punctuation</h5>
+                <p>You can remove punctuation from the input text or replace them with a string if specified.</p>
+<pre class="signature"><code>def replace_punctuation(self, text, excluded=None, replacement=''):
+"""
+Args:
+    text: The text to be processed.
+    excluded: Set of characters to exclude.
+    replacement: New text that will replace punctuation.
+"""</code></pre>
+              </div>
+              <div id="norm-symbols">
+                <h5>Replace symbols</h5>
+                <p>You can remove symbols from the input text or replace them with a specified string.</p>
+<pre class="signature"><code>def replace_symbols(text, form='NFKD', excluded=None, replacement=''):
+"""
+Args:
+    text: The text to be processed.
+    form: Unicode form.
+    excluded: Set of unicode characters to exclude.
+    replacement: New text that will replace symbols.
+"""</code></pre>
+              </div>
+              <div id="norm-urls">
+                <h5>Replace URLs</h5>
+                <p>You can remove URLs from the input text or replace them with a string if specified.</p>
+<pre class="signature"><code>def replace_urls(text, replacement=''):
+"""
+Args:
+    text: The text to be processed.
+    replacement: New text that will replace URLs.
+"""</code></pre>
+              </div>
+            </section>
+          </section>
+
+          <section>
+            <h3>Command Line Interface</h3>
+            <section id="cli-introduction">
+              <h4>Introduction</h4>
+              <p>Cucco provides a command line tool that can be used directly from the terminal and that is installed along with the library. This section covers the usage and features of this tool.</p>
+            </section>
+
+            <section id="configuration-file">
+              <h4>The configuration file</h4>
+              <p>Although is not strictely necessary, the command line allows to set a configuration file with all the normalizations to apply to a given text. This is an example of configuration file:</p>
+<pre><code class="yaml">normalizations:
+  - remove_extra_whitespaces
+  - replace_punctuation:
+      replacement: ' '
+  - remove_stop_words</code></pre>
+  Cucco configuration file uses the <a href="http://yaml.org/">YAML format</a> and expects a root element named <em>normalizations</em>. This element have to contain a list of all the normalizations to apply and the parameters for them.</p>
+              <p>To use this file, the parameter <em>-c path_to_config.yaml</em> has to be used.</p>
+            </section>
+
+            <section id="normalizing">
+              <h4>Normalizing input</h4>
+              <p>This section shows how to use the tool to normalize text from different inputs.</p>
+
+              <section id="user-defined">
+                <h5>User defined text</h5>
+                <p>The most straightforward way to use cucco is supplying a text while executing it. An example of this method will be the next one:</p>
+<pre><code class="shell">$ cucco normalize 'Who let the cucco out?'
+cucco</code></pre>
+              </section>
+
+              <section id="pipe-text">
+                <h5>Pipe text</h5>
+                <p>In a similar way to the example above, it is possiblem to normalize the text comming from a different command using pipes. This example ilustrates how to do it:</p>
+<pre><code class="shell">$ echo "Who let the cucco out?" | cucco normalize
+cucco</code></pre>
+              </section>
+
+              <section id="files-on-disk">
+                <h5>Files on disk</h5>
+                <p>Finally, cucco allows to apply normalizations to all the files in a given directory. This can be achieved in the next way:</p>
+<pre><code class="shell">$ cucco batch path_to_directory
+2017-06-18 23:28:14,455 I Processing files in "path_to_directory"</code></pre>
+<p>Option <em>-r</em> or <em>--recursive</em> can be used to find files recursively.</p>
+                <p>At the moment is not possible to apply normalizations to a single episode but this functionality will be available soon. Follow the progress <a href="https://github.com/davidmogar/cucco/issues/42">here</a>.</p>
+              </section>
+            </section>
+
+            <section id="watch-mode">
+              <h4>Watch mode</h4>
+              <p>One of the most advanced features of the command line tool is to run it in "watch mode". In this mode, cucco will monitor a given path for changes, applying normalizations to every new or modified file.</p>
+<pre><code class="shell">$ cucco batch --watch path_to_directory
+2017-06-18 23:24:40,633 I Initializing watcher for path "path_to_directory"
+2017-06-18 23:24:40,634 I Starting watcher
+2017-06-18 23:24:40,635 I Waiting for file events</code></pre>
+              <p>Option <em>-r</em> or <em>--recursive</em> can be used to find new and modified files recursively.</p>
+            </section>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>Copyright © 2017 David Moreno García.</p>
+        <p>Licensed under the <a href="https://github.com/davidmogar/cucco/blob/master/LICENSE">MIT License</a>.</p>
+      </div>
+    </footer>
+
+    <script src="js/cucco.js"></script>
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
