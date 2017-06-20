@@ -55,23 +55,7 @@
       <p>The cucco API is organized around public and private endpoints. The API is predictable, has function-oriented URLs, and uses HTTP response codes to indicate API errors. It use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support api key/secret authentication, allowing you to interact securely with our API from a client-side. JSON is returned by all API responses, including errors. All normalization endpoints support both, GET and POST methods.</p>
       <div class="endpoint row">
         <div class="data column">
-          <h3>/status</h3>
-          <p>Returns the status of the API.</p>
-        </div>
-        <div class="code column">
-          <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/status
- </code></pre>
-          <p>Example response:</p>
-<pre><code class="json">{
-    "status": "ok"
-}</code></pre>
-        </div>
-      </div>
-
-      <div class="endpoint row">
-        <div class="data column">
-          <h3>/public/accents</h3>
+          <h3>/api/v1/accents</h3>
           <p>Removes accent marks in the text.</p>
           <h4>Attributes</h4>
           <table>
@@ -86,7 +70,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/accents \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/accents \
     -d text="¿Quién dejó al cucco fuera?"
  </code></pre>
           <p>Example response:</p>
@@ -98,7 +82,7 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/characters</h3>
+          <h3>/api/v1/characters</h3>
           <p>Remove specific characters from the input text or replace them with a specified string.</p>
           <h4>Attributes</h4>
           <table>
@@ -126,7 +110,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/characters \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/characters \
     -d text="Who let the cucco out?" \
     -d replacement="X"
  </code></pre>
@@ -141,7 +125,7 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/emails</h3>
+          <h3>/api/v1/emails</h3>
           <p>Remove email addresses from the input text or replace them with a specified string.</p>
           <h4>Attributes</h4>
           <table>
@@ -162,7 +146,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/emails \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/emails \
     -d text="Support email address -> support@cucco.io" \
     -d replacement="X"
  </code></pre>
@@ -176,7 +160,7 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/emojis</h3>
+          <h3>/api/v1/emojis</h3>
           <p>Remove emojis from the input text, or replace them with a specified string.</p>
           <h4>Attributes</h4>
           <table>
@@ -197,7 +181,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/emojis \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/emojis \
     -d text="Cuccos 🐔 cuccos 🐔 everywhere" \
     -d replacement="X"
  </code></pre>
@@ -211,7 +195,7 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/hyphens</h3>
+          <h3>/api/v1/hyphens</h3>
           <p>Replace hyphens from the input text with a white space or a specified string.</p>
           <h4>Attributes</h4>
           <table>
@@ -232,7 +216,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/hyphens \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/hyphens \
     -d text="Cucco phone numer is 555-1234" \
     -d replacement="X"
  </code></pre>
@@ -246,7 +230,7 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/normalize</h3>
+          <h3>/api/v1/normalize</h3>
           <p>Apply a list of normalizations to the given text. If no normalizations to apply are defined, the default ones will be used.</p>
           <h4>Attributes</h4>
           <table>
@@ -267,7 +251,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/normalize \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/normalize \
     -H "Content-Type: application/json" -d '{
         "text": "Who    let the ; cucco    out?",
         "normalizations": [
@@ -298,7 +282,7 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/punctuation</h3>
+          <h3>/api/v1/punctuation</h3>
           <p>Remove punctuation from the input text or replace them with a string if specified.</p>
           <h4>Attributes</h4>
           <table>
@@ -325,7 +309,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/punctuation \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/punctuation \
     -d text="Support email address -> support@cucco.io 🐔" \
     -d excluded="-@" \
     -d replacement="X"
@@ -344,7 +328,23 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/stopwords</h3>
+          <h3>/api/v1/status</h3>
+          <p>Returns the status of the API.</p>
+        </div>
+        <div class="code column">
+          <p>Example request:</p>
+<pre><code class="shell">$ curl http://cucco.io/api/v1/status
+ </code></pre>
+          <p>Example response:</p>
+<pre><code class="json">{
+    "status": "ok"
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="endpoint row">
+        <div class="data column">
+          <h3>/api/v1/stopwords</h3>
           <p>Remove stop words from the text. The dataset and language codes can be found in <a href="https://github.com/davidmogar/cucco/tree/master/cucco/data">GitHub</a>.</p>
           <h4>Attributes</h4>
           <table>
@@ -371,7 +371,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/stopwords \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/stopwords \
    -d text="Who let the cucco out" \
    -d ignore_case="true" \
    -d language="en"
@@ -387,7 +387,7 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/symbols</h3>
+          <h3>/api/v1/symbols</h3>
           <p>Remove symbols from the input text or replace them with a specified string.</p>
           <h4>Attributes</h4>
           <table>
@@ -420,7 +420,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/symbols \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/symbols \
    -d text="Who let the cucco out (ñ)" \
    -d form="NFKD" \
    -d replacement="X"
@@ -436,7 +436,7 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/urls</h3>
+          <h3>/api/v1/urls</h3>
           <p>Remove URLs from the input text or replace them with a string if specified.</p>
           <h4>Attributes</h4>
           <table>
@@ -457,7 +457,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/urls \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/urls \
    -d text="Get cucco from http://cucco.io" \
    -d replacement="X"
  </code></pre>
@@ -471,7 +471,7 @@
 
       <div class="endpoint row">
         <div class="data column">
-          <h3>/public/whitespaces</h3>
+          <h3>/api/v1/whitespaces</h3>
           <p>Removes white spaces from the beginning and the end of the string, as well as duplicated white spaces between words.</p>
           <h4>Attributes</h4>
           <table>
@@ -486,7 +486,7 @@
         </div>
         <div class="code column">
           <p>Example request:</p>
-<pre><code class="shell">$ curl http://api.cucco.io/public/whitespaces \
+<pre><code class="shell">$ curl http://cucco.io/api/v1/whitespaces \
    -d text="Who    let the cucco    out?" \
    -d replacement="X"
  </code></pre>

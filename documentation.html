@@ -107,9 +107,9 @@
 
             <section id="how-to-install">
               <h4>How to install</h4>
-              <p>The easiest way to install cucco is by using pip, as you get the latest release version. Simply run the following command:</p>
+              <p>The easiest way to install cucco is by using <em>pip</em>, as you get the latest release version. Simply run the following command:</p>
 <pre><code class="shell">$ pip install cucco</code></pre>
-              <p>Another way to install cucco is by installing it directly from the code using Git. To do this, clone the repository from Github and install it like this:</p>
+              <p>Another way to install cucco is by installing it directly from the code using <em>git</em>. To do this, clone the repository from Github and install it like this:</p>
 <pre><code class="shell">$ git clone https://github.com/davidmogar/cucco.git
 $ cd cucco
 $ python setup.py install</code></pre>
@@ -124,7 +124,7 @@ $ python setup.py install</code></pre>
               <div id="minimal-application">
                 <h5>A minimal application</h5>
                 <p>You can normalize text within your code using the default settings. In the default mode, punctuation, extra white spaces and symbols are removed. A specified list of English stop words are also removed.</p>
-                <p>For example, to apply all normalizations to the text ‘Who let the cucco out?’:</p>
+                <p>For example, to apply all normalizations to the text "Who let the cucco out?"":</p>
 <pre><code class="python">from cucco import Cucco
 
 cucco = Cucco()
@@ -314,9 +314,81 @@ cucco</code></pre>
               <p>Option <em>-r</em> or <em>--recursive</em> can be used to find new and modified files recursively.</p>
             </section>
           </section>
+
+          <section id="api">
+            <h3>API</h3>
+
+            <section id="api-introduction"></section>
+            <section id="endpoints"></section>
+            <section id="rate-limits">
+              <h4>Rate limits</h4>
+              <p>Public endpoints are rate limited, what means that users only can make a limited number of requests per a given period of time. Once the limit is surpassed, an error message will be returned for the following requests in the same time window.</p>
+              <p>HTTP headers can be checked to find out the reason of a rate limit error. The following headers are returned with every request:</p>
+              <ul>
+                <li><em>X-Rate-Limit-Limit:</em> the rate limit ceiling for that given endpoint</li>
+                <li><em>X-Rate-Limit-Remaining:</em> the number of requests left for the current window</li>
+                <li><em>X-Rate-Limit-Reset:</em> the remaining window before the rate limit resets, in UTC <a href="https://en.wikipedia.org/wiki/Unix_time">epoch seconds</a></li>
+              </ul>
+
+              <p>The next table shows rate limits for the different routes:</p>
+              <table>
+                <tr>
+                  <th>Endpoint</th>
+                  <th>Rate limit</th>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/accents</em></td>
+                  <td>30 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/characters</em></td>
+                  <td>30 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/emails</em></td>
+                  <td>30 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/emojis</em></td>
+                  <td>30 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/hyphens</em></td>
+                  <td>30 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/normalize</em></td>
+                  <td>10 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/punctuation</em></td>
+                  <td>30 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/stopwords</em></td>
+                  <td>10 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/symbols</em></td>
+                  <td>30 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/urls</em></td>
+                  <td>30 per hour</td>
+                </tr>
+                <tr>
+                  <td><em>/api/v1/whitespaces</em></td>
+                  <td>30 per hour</td>
+                </tr>
+              </table>
+            </section>
+            <section id="authentication"></section>
+          </section>
         </div>
       </div>
     </section>
+
+    <i id="go-up" class="fa fa-chevron-up" aria-hidden="true"></i>
 
     <footer>
       <div class="container">

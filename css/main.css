@@ -804,7 +804,7 @@ img {
     border-left: none;
     margin: 0.5em 0; }
 
-.button {
+.button, input[type='submit'] {
   background-color: #301d30;
   border-color: #301d30;
   color: white;
@@ -812,11 +812,11 @@ img {
   font-size: 1em;
   font-weight: normal;
   text-transform: none; }
-  .button:active, .button:hover, .button:link, .button:visited {
+  .button:active, .button:hover, .button:link, .button:visited, input[type='submit']:active, input[type='submit']:hover, input[type='submit']:link, input[type='submit']:visited {
     color: white; }
-  .button:active {
+  .button:active, input[type='submit']:active {
     background-color: #301d30; }
-  .button:hover {
+  .button:hover, input[type='submit']:hover {
     background-color: #402740;
     border-color: #402740; }
 
@@ -826,6 +826,41 @@ em {
   font-size: 0.9em;
   font-style: normal;
   padding: 0.1em 0.5em; }
+
+input[type='password'], input[type='text'] {
+  font-family: 'Roboto', sans-serif; }
+  input[type='password']:focus, input[type='text']:focus {
+    border-color: #301d30; }
+
+label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; }
+
+form ul.errors li {
+  color: #ff5858;
+  list-style: none;
+  margin-left: 0; }
+
+#go-up {
+  background-color: #301d30;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  bottom: -5em;
+  color: white;
+  cursor: pointer;
+  font-size: 1.8em;
+  left: 50%;
+  margin-bottom: 0;
+  padding: 0.2em 1em;
+  position: fixed;
+  transition: bottom 1s ease-in-out;
+  -moz-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0); }
+  #go-up.visible {
+    bottom: 0; }
 
 .fa {
   color: #301d30;
@@ -875,7 +910,7 @@ nav {
   nav {
     height: auto;
     margin-top: 1.5em;
-    overflow: auto;
+    overflow: visible;
     text-align: right; }
     nav ul > li {
       display: inline-block;
@@ -902,6 +937,7 @@ nav {
 .sidebar {
   background-color: #f6f9fc;
   border-radius: 5px;
+  margin-bottom: 2em;
   padding: 1em 1em 0 !important; }
   .sidebar > span {
     color: #aaa;
