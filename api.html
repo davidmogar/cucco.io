@@ -52,21 +52,23 @@
     </section>
 
     <section id="api" class="container">
-      <p>The cucco API is organized around public and private endpoints. The API is predictable, has function-oriented URLs, and uses HTTP response codes to indicate API errors. It use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support api key/secret authentication, allowing you to interact securely with our API from a client-side. JSON is returned by all API responses, including errors. All normalization endpoints support both, GET and POST methods.</p>
+      <p>The cucco API is organized around public and private endpoints. The API is predictable, has function-oriented URLs, and uses HTTP response codes to indicate API errors. It uses built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. It supports api key/secret authentication, allowing you to interact securely with our API from a client-side. JSON is returned by all API responses, including errors. All normalization endpoints support both GET and POST methods.</p>
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/accents</h3>
           <p>Removes accent marks in the text.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>Text from where to remove accent marks.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>Text from where to remove accent marks.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
@@ -83,35 +85,38 @@
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/characters</h3>
-          <p>Remove specific characters from the input text or replace them with a specified string.</p>
+          <p>Removes specific characters from the input text or replaces them with a specified string.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>Text from where to replace characters.</td>
-            </tr>
-            <tr>
-              <td>characters
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>String containing the characters to replace. The string doesn't have to be command separated.</td>
-            </tr>
-            <tr>
-              <td>replacement
-                <span class="type">string, defaults to empty</span>
-              </td>
-              <td>New text that will replace the characters.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>Text from which characters will be removed or replaced.</td>
+              </tr>
+              <tr>
+                <td>characters
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>String containing the characters to replace. The string doesn't have to be comma separated.</td>
+              </tr>
+              <tr>
+                <td>replacement
+                  <span class="type">string, defaults to empty</span>
+                </td>
+                <td>New text that will replace the characters.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
 <pre><code class="shell">$ curl http://cucco.io/api/v1/characters \
     -d text="Who let the cucco out?" \
+    -d characters="lt" \
     -d replacement="X"
  </code></pre>
           <p>Example response:</p>
@@ -126,23 +131,25 @@
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/emails</h3>
-          <p>Remove email addresses from the input text or replace them with a specified string.</p>
+          <p>Removes email addresses from the input text or replaces them with a specified string.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>Text from where to remove email addresses.</td>
-            </tr>
-            <tr>
-              <td>replacement
-                <span class="type">string, defaults to empty</span>
-              </td>
-              <td>New text that will replace email addresses.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>Text from which email addresses will be removed or replaced.</td>
+              </tr>
+              <tr>
+                <td>replacement
+                  <span class="type">string, defaults to empty</span>
+                </td>
+                <td>New text that will replace email addresses.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
@@ -161,23 +168,25 @@
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/emojis</h3>
-          <p>Remove emojis from the input text, or replace them with a specified string.</p>
+          <p>Removes emojis from the input text, or replaces them with a specified string.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>Text from where to remove emojis.</td>
-            </tr>
-            <tr>
-              <td>replacement
-                <span class="type">string, defaults to empty</span>
-              </td>
-              <td>New text that will replace emojis.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>Text from which emojis will be removed or replaced.</td>
+              </tr>
+              <tr>
+                <td>replacement
+                  <span class="type">string, defaults to empty</span>
+                </td>
+                <td>New text that will replace emojis.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
@@ -196,23 +205,25 @@
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/hyphens</h3>
-          <p>Replace hyphens from the input text with a white space or a specified string.</p>
+          <p>Replaces hyphens from the input text with a white space or a specified string.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>Text from where to remove hyphens.</td>
-            </tr>
-            <tr>
-              <td>replacement
-                <span class="type">string, defaults to " "</span>
-              </td>
-              <td>New text that will replace hyphens.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>Text from which hyphens will be removed or replaced.</td>
+              </tr>
+              <tr>
+                <td>replacement
+                  <span class="type">string, defaults to " "</span>
+                </td>
+                <td>New text that will replace hyphens.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
@@ -231,23 +242,25 @@
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/normalize</h3>
-          <p>Apply a list of normalizations to the given text. If no normalizations to apply are defined, the default ones will be used.</p>
+          <p>Applies a list of normalizations to the given text. If no normalizations are defined, the default ones will be used.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>The text to be processed.</td>
-            </tr>
-            <tr>
-              <td>normalizations
-                <span class="type">object, optional</span>
-              </td>
-              <td>List of normalizations to apply. The format for this list is similar to the one used in the library but respecting JSON rules.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>The text to be processed.</td>
+              </tr>
+              <tr>
+                <td>normalizations
+                  <span class="type">object, optional</span>
+                </td>
+                <td>List of normalizations to apply. The format for this list is similar to the one used in the library but respecting JSON rules.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
@@ -283,29 +296,31 @@
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/punctuation</h3>
-          <p>Remove punctuation from the input text or replace them with a string if specified.</p>
+          <p>Removes punctuation from the input text or replaces them with a string if specified.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>The text to be processed.</td>
-            </tr>
-            <tr>
-              <td>excluded
-                <span class="type">list, defaults to none</span>
-              </td>
-              <td>List of characters to exclude.</td>
-            </tr>
-            <tr>
-              <td>replacement
-                <span class="type">string, defaults to empty</span>
-              </td>
-              <td>New text that will replace punctuation.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>The text to be processed.</td>
+              </tr>
+              <tr>
+                <td>excluded
+                  <span class="type">list, defaults to none</span>
+                </td>
+                <td>List of characters to exclude.</td>
+              </tr>
+              <tr>
+                <td>replacement
+                  <span class="type">string, defaults to empty</span>
+                </td>
+                <td>New text that will replace punctuation.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
@@ -345,29 +360,31 @@
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/stopwords</h3>
-          <p>Remove stop words from the text. The dataset and language codes can be found in <a href="https://github.com/davidmogar/cucco/tree/master/cucco/data">GitHub</a>.</p>
+          <p>Removes stop words from the text. The dataset and language codes can be found in <a href="https://github.com/davidmogar/cucco/tree/master/cucco/data">GitHub</a>.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>The text to be processed.</td>
-            </tr>
-            <tr>
-              <td>ignore_case
-                <span class="type">boolean, defaults to true</span>
-              </td>
-              <td>Whether or not ignore case.</td>
-            </tr>
-            <tr>
-              <td>language
-                <span class="type">string, defaults to "en"</span>
-              </td>
-              <td>Code of the language to use.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>The text to be processed.</td>
+              </tr>
+              <tr>
+                <td>ignore_case
+                  <span class="type">boolean, defaults to true</span>
+                </td>
+                <td>Whether or not to ignore case.</td>
+              </tr>
+              <tr>
+                <td>language
+                  <span class="type">string, defaults to "en"</span>
+                </td>
+                <td>Code of the language to use.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
@@ -388,35 +405,37 @@
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/symbols</h3>
-          <p>Remove symbols from the input text or replace them with a specified string.</p>
+          <p>Removes symbols from the input text or replaces them with a specified string.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>Text from where to remove symbols.</td>
-            </tr>
-            <tr>
-              <td>form
-                <span class="type">string, defaults to NFKD</span>
-              </td>
-              <td>Unicode form. Valid values for form are ‘NFC’, ‘NFKC’, ‘NFD’, and ‘NFKD’.</td>
-            </tr>
-            <tr>
-              <td>excluded
-                <span class="type">list, defaults to none</span>
-              </td>
-              <td>List of unicode characters to exclude.</td>
-            </tr>
-            <tr>
-              <td>replacement
-                <span class="type">string, defaults to empty</span>
-              </td>
-              <td>New text that will replace symbols.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>Text from which symbols will be removed or replaced.</td>
+              </tr>
+              <tr>
+                <td>form
+                  <span class="type">string, defaults to NFKD</span>
+                </td>
+                <td>Unicode form. Valid values are 'NFC,' 'NFKC,' 'NFD,' and 'NFKD.'</td>
+              </tr>
+              <tr>
+                <td>excluded
+                  <span class="type">list, defaults to none</span>
+                </td>
+                <td>List of unicode characters to exclude.</td>
+              </tr>
+              <tr>
+                <td>replacement
+                  <span class="type">string, defaults to empty</span>
+                </td>
+                <td>New text that will replace symbols.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
@@ -437,23 +456,25 @@
       <div class="endpoint row">
         <div class="data column">
           <h3>/api/v1/urls</h3>
-          <p>Remove URLs from the input text or replace them with a string if specified.</p>
+          <p>Removes URLs from the input text or replaces them with a string if specified.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>Text from where to remove urls.</td>
-            </tr>
-            <tr>
-              <td>replacement
-                <span class="type">string, defaults to empty</span>
-              </td>
-              <td>New text that will replace urls.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>Text from which urls will be removed or replaced.</td>
+              </tr>
+              <tr>
+                <td>replacement
+                  <span class="type">string, defaults to empty</span>
+                </td>
+                <td>New text that will replace urls.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
@@ -474,21 +495,22 @@
           <h3>/api/v1/whitespaces</h3>
           <p>Removes white spaces from the beginning and the end of the string, as well as duplicated white spaces between words.</p>
           <h4>Attributes</h4>
-          <table>
-            <tr>
-              <td>text
-                <span class="required">required</span>
-                <span class="type">string</span>
-              </td>
-              <td>Text from where to remove extra whitespaces.</td>
-            </tr>
-          </table>
+          <div class="responsive-table">
+            <table>
+              <tr>
+                <td>text
+                  <span class="required">required</span>
+                  <span class="type">string</span>
+                </td>
+                <td>Text from which extra whitespaces will be removed.</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="code column">
           <p>Example request:</p>
 <pre><code class="shell">$ curl http://cucco.io/api/v1/whitespaces \
-   -d text="Who    let the cucco    out?" \
-   -d replacement="X"
+   -d text="Who    let the cucco    out?"
  </code></pre>
           <p>Example response:</p>
 <pre><code class="json">{
@@ -508,5 +530,14 @@
     <script src="js/cucco.js"></script>
     <script src="js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-62590261-4', 'auto');
+      ga('send', 'pageview');
+      </script>
+      <script async src='https://www.google-analytics.com/analytics.js'>
+    </script>
+    <!-- End Google Analytics -->
   </body>
 </html>
